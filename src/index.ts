@@ -1,10 +1,10 @@
 import { Query, QueryClient } from "@tanstack/react-query";
-import {
+import type {
   GenerateQueryKey,
   GenerateQueryKeyFunction,
   GenerateQueryKeyWithArgs,
   Merge,
-} from "./types";
+} from "./types.js";
 /**
  * Factory for creating and managing query keys with optional annotations.
  *
@@ -29,7 +29,7 @@ import {
  *   // Register a query key that accepts arguments
  *   .createQueryKeyWithArgs("posts")<[{ id: number }]>()
  *   // Add additional annotations later
- *   .annotateQueryKey("posts", { role: "editor" });
+ *   .annotateQuery("posts", { role: "editor" });
  * ```
  */
 export default class QueryKeyFactory<
@@ -84,7 +84,7 @@ export default class QueryKeyFactory<
    * factory.createQueryKey("users", { role: "admin" });
    *
    * // The generated function can be used directly:
-   * const userKey = factory.keys.users(); // ["users"]
+   * const userKey = factory.queries.users(); // ["users"]
    * ```
    */
   createQueryKey<Key extends string>(key: Key, annotation?: Annotations) {
@@ -118,10 +118,10 @@ export default class QueryKeyFactory<
    * // Register a query key "post" that expects an object containing an id
    * const factoryWithPost = factory
    *   .createQueryKeyWithArgs("post")<[{ id: number }]>()
-   *   .annotateQueryKey("post", { role: "editor" });
+   *   .annotateQuery("post", { role: "editor" });
    *
    * // Use the generated function:
-   * const postKey = factoryWithPost.keys.post({ id: 42 }); // ["post", { id: 42 }]
+   * const postKey = factoryWithPost.queries.post({ id: 42 }); // ["post", { id: 42 }]
    * ```
    */
   createQueryKeyWithArgs<Key extends string>(
@@ -178,7 +178,7 @@ export default class QueryKeyFactory<
    * @example
    * ```ts
    * // Add a role annotation to an already‑registered query key
-   * factory.annotateQueryKey("users", { role: "viewer" });
+   * factory.annotateQuery("users", { role: "viewer" });
    * ```
    */
   annotateQueryKey(key: keyof TKeysObject, annotation: Annotations) {
@@ -196,17 +196,16 @@ export default class QueryKeyFactory<
   }
 
   /**
-   * Retrieves the generated query key function for a given key.
+   * Retrieves the generated query key for a given key.
    *
    * @param key - The key whose query function should be retrieved.
-   * @returns The stored query key function.
+   * @returns The result of invoking the stored query key function.
    * @throws If the key does not exist in the factory.
    *
    * @example
    * ```ts
    * // Assuming "users" was registered earlier
-   * const keyFn = factory.getQueryKeyFn("users");
-   * const key = keyFn(); // ["users"]
+   * const key = factory.getQuery("users"); // ["users"]
    * ```
    */
   getQueryKeyFn<T extends keyof TKeysObject>(key: T): TKeysObject[T] {
