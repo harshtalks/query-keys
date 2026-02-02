@@ -1,0 +1,8 @@
+# Artifacts
+build
+coverage
+dist/
+
+# Ignore HTML and lockfiles
+**/*.html
+pnpm-lock.yaml

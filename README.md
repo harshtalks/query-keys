@@ -18,17 +18,17 @@ yarn add @tanstack/react-query
 
 ## Basic Concepts
 
-| Concept | Description |
-|--------|-------------|
-| **Query key function** | A function that returns the array React Query expects, e.g. `["users"]` or `["post", { id: 42 }]`. |
-| **Annotation** | Any extra data you want to associate with a key – e.g. a user role, a feature flag, etc. |
-| **Factory** | Holds all generated functions and a map of annotations, exposing helpers for invalidation and resetting. |
+| Concept                | Description                                                                                              |
+| ---------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Query key function** | A function that returns the array React Query expects, e.g. `["users"]` or `["post", { id: 42 }]`.       |
+| **Annotation**         | Any extra data you want to associate with a key – e.g. a user role, a feature flag, etc.                 |
+| **Factory**            | Holds all generated functions and a map of annotations, exposing helpers for invalidation and resetting. |
 
 ## Quick Start
 
 ```ts
-import { QueryClient } from "@tanstack/react-query";
-import QueryKeyFactory from "./QueryKeyFactory";
+import { QueryClient } from '@tanstack/react-query';
+import QueryKeyFactory from './QueryKeyFactory';
 
 /* 1️⃣ Initialise React Query client */
 const queryClient = new QueryClient();
@@ -39,17 +39,17 @@ const factory = new QueryKeyFactory<MyAnnotations>(queryClient);
 
 /* 3️⃣ Register keys */
 factory
-  .createQueryKey("users", { role: "admin" })                     // simple key
-  .createQueryKeyWithArgs("posts")<[{ id: number }]>()           // key with args
-  .annotateQueryKey("posts", { role: "editor" });
+  .createQueryKey('users', { role: 'admin' }) // simple key
+  .createQueryKeyWithArgs('posts')<[{ id: number }]>() // key with args
+  .annotateQueryKey('posts', { role: 'editor' });
 
 /* 4️⃣ Use the generated key functions */
-const usersKey = factory.keys.users();               // ["users"]
-const postKey = factory.keys.posts({ id: 42 });       // ["posts", { id: 42 }]
+const usersKey = factory.keys.users(); // ["users"]
+const postKey = factory.keys.posts({ id: 42 }); // ["posts", { id: 42 }]
 
 /* 5️⃣ Invalidate / reset queries */
-factory.invalidateQueries("users");                    // invalidate all "users" queries
-factory.resetQueryByAnnotations({ role: "editor" });   // reset every query annotated as editor
+factory.invalidateQueries('users'); // invalidate all "users" queries
+factory.resetQueryByAnnotations({ role: 'editor' }); // reset every query annotated as editor
 ```
 
 ## API Reference
@@ -63,11 +63,11 @@ Creates a factory instance.
 
 ### Registering Keys
 
-| Method | Signature | Description |
-|--------|-----------|-------------|
-| `createQueryKey(key, annotation?)` | `<Key extends string>(key: Key, annotation?: Annotations) => QueryKeyFactory<Annotations, Merge<TKeysObject, { [k in Key]: GenerateQueryKey<Key> }>>` | Adds a **no‑args** query key. |
+| Method                                      | Signature                                                                                                                                                                                    | Description                                                                                                        |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `createQueryKey(key, annotation?)`          | `<Key extends string>(key: Key, annotation?: Annotations) => QueryKeyFactory<Annotations, Merge<TKeysObject, { [k in Key]: GenerateQueryKey<Key> }>>`                                        | Adds a **no‑args** query key.                                                                                      |
 | `createQueryKeyWithArgs(key, annotations?)` | `<Key extends string>(key: Key, annotations?: Annotations) => <U extends unknown[]>() => QueryKeyFactory<Annotations, Merge<TKeysObject, { [k in Key]: GenerateQueryKeyWithArgs<Key, U> }>>` | Returns a higher‑order function that receives the argument tuple type (`U`) and registers a **parameterised** key. |
-| `annotateQueryKey(key, annotation)` | `(key: keyof TKeysObject, annotation: Annotations) => this` | Merges additional annotation data into an already‑registered key. |
+| `annotateQueryKey(key, annotation)`         | `(key: keyof TKeysObject, annotation: Annotations) => this`                                                                                                                                  | Merges additional annotation data into an already‑registered key.                                                  |
 
 ### Accessors & Helpers
 
@@ -78,12 +78,12 @@ Creates a factory instance.
 
 ### Invalidation & Resetting
 
-| Method | Signature | Behaviour |
-|--------|-----------|-----------|
-| `invalidateQueries(...keys)` | `(...keys: (keyof TKeysObject)[]) => void` | Calls `queryClient.invalidateQueries` for the supplied base keys. |
-| `resetQueries(...keys)` | `(...keys: (keyof TKeysObject)[]) => void` | Calls `queryClient.resetQueries` for the supplied base keys. |
-| `invalidateQueryByAnnotations(filter)` | `(filter: Partial<Annotations>) => void` | Invalidates **all** queries whose stored annotations match the filter. |
-| `resetQueryByAnnotations(filter)` | `(filter: Partial<Annotations>) => void` | Resets **all** queries whose stored annotations match the filter. |
+| Method                                 | Signature                                  | Behaviour                                                              |
+| -------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------------- |
+| `invalidateQueries(...keys)`           | `(...keys: (keyof TKeysObject)[]) => void` | Calls `queryClient.invalidateQueries` for the supplied base keys.      |
+| `resetQueries(...keys)`                | `(...keys: (keyof TKeysObject)[]) => void` | Calls `queryClient.resetQueries` for the supplied base keys.           |
+| `invalidateQueryByAnnotations(filter)` | `(filter: Partial<Annotations>) => void`   | Invalidates **all** queries whose stored annotations match the filter. |
+| `resetQueryByAnnotations(filter)`      | `(filter: Partial<Annotations>) => void`   | Resets **all** queries whose stored annotations match the filter.      |
 
 ### Private Helpers (for internal use)
 

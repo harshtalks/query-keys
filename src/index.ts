@@ -1,10 +1,10 @@
-import { Query, QueryClient } from "@tanstack/react-query";
+import { Query, QueryClient } from '@tanstack/react-query';
 import type {
   GenerateQueryKey,
   GenerateQueryKeyFunction,
   GenerateQueryKeyWithArgs,
   Merge,
-} from "./types.js";
+} from './types.js';
 /**
  * Factory for creating and managing query keys with optional annotations.
  *
