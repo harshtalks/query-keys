@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+*.log
+
+# Build outputs (adjust for your bundler like esbuild/pnpm)
+dist/
+build/
+lib/
+*.tgz
+*.tar.gz
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Testing (Vitest/Playwright)
+coverage/
+test-results/
+playwright-report/
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
