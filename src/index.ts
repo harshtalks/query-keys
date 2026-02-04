@@ -67,7 +67,10 @@ export default class QueryKeyFactory<
   constructor(queryClient: QueryClient) {
     this.queryClient = queryClient;
     this.factory = {} as TKeysObject;
-    this.annotationsRecord = {} as Record<keyof TKeysObject, Annotations>;
+    this.annotationsRecord = {} as Record<
+      keyof TKeysObject,
+      Partial<Annotations>
+    >;
   }
 
   /**
@@ -87,7 +90,10 @@ export default class QueryKeyFactory<
    * const userKey = factory.queries.users(); // ["users"]
    * ```
    */
-  createQueryKey<Key extends string>(key: Key, annotation?: Annotations) {
+  createQueryKey<Key extends string>(
+    key: Key,
+    annotation?: Partial<Annotations>,
+  ) {
     this.factory = {
       ...this.factory,
       key: this.generateQueryKey(key),
@@ -126,7 +132,7 @@ export default class QueryKeyFactory<
    */
   createQueryKeyWithArgs<Key extends string>(
     key: Key,
-    annotations?: Annotations,
+    annotations?: Partial<Annotations>,
   ) {
     return <U extends unknown[]>() => {
       this.factory = {
@@ -181,7 +187,7 @@ export default class QueryKeyFactory<
    * factory.annotateQuery("users", { role: "viewer" });
    * ```
    */
-  annotateQueryKey(key: keyof TKeysObject, annotation: Annotations) {
+  annotateQueryKey(key: keyof TKeysObject, annotation: Partial<Annotations>) {
     this.annotationsRecord[key] = {
       ...this.annotationsRecord[key],
       ...annotation,

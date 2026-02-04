@@ -32,7 +32,7 @@ yarn add @harshtalks/query-keys @tanstack/react-query
 
 ```ts
 import { QueryClient } from '@tanstack/react-query';
-import QueryKeyFactory from './QueryKeyFactory';
+import QueryKeyFactory from '@harshtalks/query-keys';
 
 /* 1️⃣ Initialise React Query client */
 const queryClient = new QueryClient();
