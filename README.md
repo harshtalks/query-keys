@@ -1,5 +1,8 @@
 # @harshtalks/query-keys
 
+**@harshtalks/query-keys** – Centralized query‑key management for Tanstack Query, with full type safety.
+[![npm version](https://badge.fury.io/js/%40harshtalks%2Fquery-keys.svg)](https://www.npmjs.com/package/@harshtalks/query-keys)
+
 `@harshtalks/query-keys` is a small utility that works with **@tanstack/react-query** to:
 
 - Generate strongly‑typed query key functions.
@@ -9,9 +12,10 @@
 ## Installation
 
 ```bash
-npm install @tanstack/react-query
-# or
-yarn add @tanstack/react-query
+# install the library and its peer dependency
+npm install @harshtalks/query-keys @tanstack/react-query
+# or with Yarn
+yarn add @harshtalks/query-keys @tanstack/react-query
 ```
 
 > The `QueryKeyFactory` class itself lives in your code‑base (e.g. `src/QueryKeyFactory.ts`).
@@ -106,4 +110,4 @@ Creates a factory instance.
 
 ## License
 
-MIT © 2024 Your Company / Open Source Contributors
+MIT © 2024 Harsh Pareek <harshpareek91@gmail.com> (https://hrshwrites.vercel.app)
