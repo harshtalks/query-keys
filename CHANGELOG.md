@@ -1,5 +1,11 @@
 # @harshtalks/query-keys
 
+## 1.1.0
+
+### Minor Changes
+
+- f82fba4: partial annotations
+
 ## 1.0.2
 
 ### Patch Changes
