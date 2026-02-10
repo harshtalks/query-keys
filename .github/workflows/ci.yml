@@ -36,4 +36,4 @@ jobs:
 
       - name: Package Deployment
         if: github.ref == 'refs/heads/main'
-        run: pnpm exec pkg-pr-new publish
+        run: npx pkg-pr-new publish --pnpm
