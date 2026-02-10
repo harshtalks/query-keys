@@ -33,3 +33,7 @@ jobs:
 
       - name: Run CI
         run: pnpm run ci
+
+      - name: Package Deployment
+        if: github.ref == 'refs/heads/main'
+        run: pnpm exec pkg-pr-new publish
