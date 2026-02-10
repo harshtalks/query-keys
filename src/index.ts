@@ -1,4 +1,7 @@
-import { Query, QueryClient } from '@tanstack/react-query';
+import type { Query, QueryClient } from '@tanstack/react-query' with {
+  'resolution-mode': 'import',
+};
+
 import type {
   GenerateQueryKey,
   GenerateQueryKeyFunction,
