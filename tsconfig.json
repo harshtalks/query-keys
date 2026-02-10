@@ -23,5 +23,6 @@
 
     /* AND if you're building for a library: */
     "declaration": true
-  }
+  },
+  "exclude": ["*.config.ts", "dist"]
 }
