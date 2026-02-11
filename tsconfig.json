@@ -1,28 +1,25 @@
 {
   "compilerOptions": {
-    /* Base Options: */
+    "lib": ["ES2022"],
+    "target": "ESNext",
+    "module": "ES2020",
+    "outDir": "./dist",
+    "declaration": true,
+    "noEmit": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-
-    /* Strictness */
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-
-    /* If transpiling with TypeScript: */
-    "module": "NodeNext",
-    "outDir": "dist",
-    "rootDir": "src",
-    "sourceMap": true,
-
-    /* AND if you're building for a library: */
-    "declaration": true
-  },
-  "exclude": ["*.config.ts", "dist"]
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  }
 }

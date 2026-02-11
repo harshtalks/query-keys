@@ -1,13 +1,14 @@
-import type { Query, QueryClient } from '@tanstack/react-query' with {
-  'resolution-mode': 'import',
-};
+import type {
+  Query,
+  QueryClient,
+} from '@tanstack/react-query/build/modern/index';
 
 import type {
   GenerateQueryKey,
   GenerateQueryKeyFunction,
   GenerateQueryKeyWithArgs,
   Merge,
-} from './types.js';
+} from './types';
 /**
  * Factory for creating and managing query keys with optional annotations.
  *
@@ -17,7 +18,7 @@ import type {
  * @example
  * ```ts
  * import { QueryClient } from "@tanstack/react-query";
- * import QueryKeyFactory from "./QueryKeyFactory";
+ * import QueryKeyFactory from "@harshtalks/query-keys";
  *
  * // Create a React Query client
  * const queryClient = new QueryClient();
