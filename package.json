@@ -1,6 +1,6 @@
 {
   "name": "@harshtalks/query-keys",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Centralized query key management for Tanstack Query, with full type safety.",
   "scripts": {
     "build": "tsup --dts",

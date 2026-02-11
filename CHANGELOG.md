@@ -1,5 +1,11 @@
 # @harshtalks/query-keys
 
+## 1.4.0
+
+### Minor Changes
+
+- 4cff676: module resolution
+
 ## 1.3.0
 
 ### Minor Changes
