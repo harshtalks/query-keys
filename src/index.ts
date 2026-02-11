@@ -1,7 +1,4 @@
-import type {
-  Query,
-  QueryClient,
-} from '@tanstack/react-query/build/modern/index';
+import type { Query, QueryClient } from '@tanstack/react-query';
 
 import type {
   GenerateQueryKey,
