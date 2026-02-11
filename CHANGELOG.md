@@ -1,5 +1,11 @@
 # @harshtalks/query-keys
 
+## 1.3.0
+
+### Minor Changes
+
+- 8f75777: module resolution issue in vite
+
 ## 1.2.0
 
 ### Minor Changes
