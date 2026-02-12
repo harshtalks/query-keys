@@ -97,7 +97,7 @@ export default class QueryKeyFactory<
   ) {
     this.factory = {
       ...this.factory,
-      key: this.generateQueryKey(key),
+      [key]: this.generateQueryKey(key),
     };
 
     this.annotationsRecord[key] = {
@@ -138,7 +138,7 @@ export default class QueryKeyFactory<
     return <U extends unknown[]>() => {
       this.factory = {
         ...this.factory,
-        key: this.generateQueryKeyWithArgs<Key, U>(key),
+        [key]: this.generateQueryKeyWithArgs<Key, U>(key),
       };
 
       this.annotationsRecord[key] = {
